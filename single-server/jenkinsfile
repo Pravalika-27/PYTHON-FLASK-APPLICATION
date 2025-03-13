@@ -10,21 +10,21 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker build -t app1 ./single-server'  
+                    sh 'docker build -t app5 ./single-server'  
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    sh 'docker run --rm app1 pytest test_app.py'
+                    sh 'docker run --rm app5 pytest test_app.py'
                 }
             }
         }
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker run -itd --name cont1 -p 5002:5000 app1'
+                    sh 'docker run -itd --name cont5 -p 5001:9000 app5'
                 }
             }
         }
